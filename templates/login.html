@@ -1,0 +1,58 @@
+{% extends "index.html"%}
+{% load static %}
+{% block content %}
+<style>
+    .inputcontainer{
+        width: 300px;
+        height: auto;
+        margin: auto;
+        margin-bottom: 20px;
+        border: 1px solid rgb(4, 4, 49);
+        border-radius: 10px;
+    }
+    .inputcontainer input{
+        padding: 7px;
+        width: 250px;
+        border-radius: 5px;
+        border: 1px solid rgb(3, 3, 28);
+    }
+    .inputcontainer button{
+        padding: 7px 20px;
+        border: .5px solid rgb(10, 10, 52);
+        color: white;
+        background-color: rgb(8, 8, 39);
+        border-radius: 10px;
+    }
+    .inputcontainer button:hover{
+        background-color: white;
+        color: rgb(3, 3, 19);
+    }
+</style>
+<div class="banner_section layout_padding">
+         <div class="container">
+         <div class="inputcontainer">
+                
+                {% for message in messages %}
+                <h5 style="color:red">{{message}}</h5>
+                {% endfor %}
+                    <form method="post">
+                    {% csrf_token %}
+                        <h3>Login</h3>
+                        <br>
+                        <input type="text" name="uname" placeholder="Username"><br><br>
+                        <input type="password" name="pswd" placeholder="password"><br><br>
+                        <button type="submit">Login</button>
+                    </form>
+                    <br><br>
+
+                </div>
+                  
+               </div>
+               <div class="col-md-4">
+                  <div class="ban_img">
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+{% endblock %}

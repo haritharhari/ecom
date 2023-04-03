@@ -1,0 +1,38 @@
+{% extends "adminhome.html" %}
+{% block content %}
+
+<div class="container">
+    {% comment %} {% for message in messages %}
+    <h6 style="color: red;">{{message}}</h6>
+    {%endfor%} {% endcomment %}
+<div class="table table-stripped bg-info">
+<table class="table">
+{{request.user.id}}
+    <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Brand</th>
+        <th>category</th>
+        <th>status</th>
+        <th>date</th>
+    </tr>
+    {% for pro in products %}
+       
+            <tr>
+                <td>{{pro.product.Product_Name}}</td>
+                <td>{{pro.product.Product_Price}}</td>
+                <td>{{pro.product.Product_Brand}}</td>
+                <td>{{pro.product.Product_Category}}</td>
+                {% if pro.paymentstatus == False %}
+                <td style= "color:yellow">Payment Pending </td>
+                {% else %}
+                <td style= "color:green">Payment success </td>
+                {% endif %}
+
+            </tr>
+        
+    {% endfor %}
+</table>
+</div>
+   
+{% endblock %}

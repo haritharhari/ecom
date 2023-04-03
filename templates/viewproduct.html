@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block content %}
+
+<style>
+    .itemcontainer{
+        margin: auto;
+        width: 90%;
+        height: 300px;
+        border: 4px solid rgb(65, 204, 158);
+        
+    }
+</style>
+<h1>Product View</h1>
+<div class="container">
+    {% for item in products %}
+    <div class="col-md-4">
+        <div class="itemcontainer">
+            <h3>{{item.Product_Name}}</h3>
+            <h3>{{item.Product_Brand}}</h3>
+            <h3>{{item.Product_Price}}</h3>
+            <h3>{{item.Product_Discription}}</h3>
+            <img src="{{item.Product_Image.url}}" style="width: 100%; height: 100px;" alt="">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="itemcontainer1">
+ <a class="btn btn-warning">Add To Cart</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

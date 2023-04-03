@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .item-head{
+        border-bottom: 1px solid gray;
+        height: 70px;
+    }
+    .item-head:nth-child(even){
+        background-color: aliceblue;
+
+    }
+
+    .order1{
+        width: 95%;
+        height: 300px;
+        border:.5px solid gray ;
+        padding: 30px;
+    }
+    .order h4{
+        text-align: center;
+        text-decoration: underline;
+    }
+</style>
+<div class="container text-center">
+
+<h1>Cart View</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-3 item">Item Name</div>
+                <div class="col-3 item ">Price</div>
+                <div class="col-3 item">Quantity</div>
+                <div class="col-3 item"><a href="">Delete</a></div>
+            </div>
+            {% for item in products %}
+            <div class="row item-head">
+                <div class="col-2 item">{{item.product.Product_Name}}</div>
+                <div class="col-2 item ">{{item.product.Product_Price}}</div>
+                <div class="col-2 item">{{item.numberofitems}}</div>
+                <div class="col-3 item"><img src="{{item.product.Product_Image.url}}" alt="" style="width: 40px; height:50px ;"></div>
+                <div class="col-3 item"><a href="{%url 'DeleteCart' item.id %}" class="btn btn-danger">Delete</a></div> 
+            </div> 
+            {% endfor %}
+        </div>
+        
+
+    
+    <div class="col-md-4">
+        <div class="order1">
+            <h4>place order</h4>
+            {% for item in products %}
+            <h6>{{item.product.Product_Name}}:{{item.product.Product_Price}}</h6>
+            {% endfor %}
+--------------------------------------
+            <h2>Total Amount:{{total}}</h2>
+            <a href="{% url 'Placeorder' %}" id="pay-btn" class="btn btn-warning rounded-pill">place order</a>
+        </div>
+    </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}
